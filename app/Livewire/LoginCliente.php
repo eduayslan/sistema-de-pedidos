@@ -8,22 +8,20 @@ use Livewire\Component;
 
 class LoginCliente extends Component
 {
-    public $loginEmail;  // Declare a propriedade para o email
-    public $loginSenha;  // Declare a propriedade para a senha
-
-    // Função para realizar o login
+    public $loginEmail;
+    public $loginSenha;
+    
     public function login()
     {
-        // Validação dos dados
         $this->validate([
-            'loginEmail' => 'required|email',  // Valida o email
-            'loginSenha' => 'required|min:6',  // Valida a senha
+            'loginEmail' => 'required|email',
+            'loginSenha' => 'required|min:6',
         ]);
 
-        // Tenta autenticar o usuário
+        
         if (Auth::attempt(['email' => $this->loginEmail, 'password' => $this->loginSenha])) {
             session()->flash('message', 'Login bem-sucedido!');
-            return redirect()->route('dashboard'); // Redireciona para o dashboard
+            return redirect()->route('dashboard');
         } else {
             session()->flash('error', 'Credenciais inválidas');
         }

@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="card-body">
-                        <!-- Exibe mensagem de sucesso ou erro -->
+                        
                         @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}
@@ -30,7 +30,7 @@
                             </div>
                         @endif
 
-                        <!-- Formulário de Login -->
+                        
                         <form wire:submit.prevent="login" method="POST">
                             @csrf
 
